@@ -235,7 +235,7 @@ class ImageEditorWindow(QMainWindow):
             return
         try:
             self._original = load_image(filename)
-        except Exception as exc:
+        except (OSError, ValueError) as exc:
             QMessageBox.critical(self, "Open failed", str(exc))
             return
 
@@ -261,7 +261,7 @@ class ImageEditorWindow(QMainWindow):
             return
         try:
             save_image(self._result.image, filename)
-        except Exception as exc:
+        except (OSError, ValueError) as exc:
             QMessageBox.critical(self, "Save failed", str(exc))
             return
         self.statusBar().showMessage(f"Saved {filename}", 5000)
@@ -286,7 +286,7 @@ class ImageEditorWindow(QMainWindow):
             return
         try:
             self._result = process_image(self._original, self._config())
-        except Exception as exc:
+        except (OSError, ValueError) as exc:
             QMessageBox.critical(self, "Processing failed", str(exc))
             return
 
@@ -320,6 +320,6 @@ class ImageEditorWindow(QMainWindow):
             )
         self.preview_label.setPixmap(pixmap)
 
-    def resizeEvent(self, event) -> None:  # noqa: N802
+    def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
         self._render_current_image()
