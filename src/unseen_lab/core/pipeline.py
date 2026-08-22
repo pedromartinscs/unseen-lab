@@ -5,7 +5,11 @@ from PIL import Image
 from unseen_lab.core.metrics import compare_images
 from unseen_lab.core.models import PipelineConfig, ProcessingResult
 from unseen_lab.core.noise import add_gaussian_noise
-from unseen_lab.core.transforms import apply_gaussian_blur, jpeg_roundtrip, micro_resample
+from unseen_lab.core.transforms import (
+    apply_gaussian_blur,
+    jpeg_roundtrip,
+    micro_resample,
+)
 
 
 def process_image(image: Image.Image, config: PipelineConfig) -> ProcessingResult:
