@@ -9,9 +9,9 @@ import numpy as np
 gi.require_version("Gimp", "3.0")
 gi.require_version("Gegl", "0.4")
 
-from gi.repository import Gegl, Gimp, GLib, GObject  # noqa: E402
+from gi.repository import Gegl, Gimp, GLib, GObject
 
-from unseen_lab.core.noise import add_gaussian_noise_array  # noqa: E402
+from unseen_lab.core.noise import add_gaussian_noise_array
 
 PROCEDURE_NAME = "plug-in-unseen-lab-subtle-noise"
 PLUGIN_BINARY = "unseen-lab"
