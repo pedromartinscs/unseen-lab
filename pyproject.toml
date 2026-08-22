@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unseen-lab"
+version = "0.1.0"
+description = "Subtle image transformation and visual experimentation toolkit."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Pedro Martins" }]
+dependencies = ["numpy>=2.0,<3", "Pillow>=10.4,<13"]
+
+[project.optional-dependencies]
+desktop = ["PySide6>=6.8,<7"]
+dev = ["pytest>=8.3,<10", "ruff>=0.8,<1"]
+
+[project.scripts]
+unseen-lab = "unseen_lab.cli:main"
+unseen-lab-gui = "unseen_lab.app.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
